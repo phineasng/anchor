@@ -1,11 +1,11 @@
 from setuptools import setup
 
-setup(name='anchor_exp',
+setup(name='anchor_custom',
       version='0.0.0.5',
       description='Anchor explanations for machine learning models',
-      url='http://github.com/marcotcr/anchor',
-      author='Marco Tulio Ribeiro',
-      author_email='marcotcr@gmail.com',
+      url='http://github.com/phineasng/anchor',
+      author='An-phi Nguyen',
+      author_email='nguyen.phineas@gmail.com',
       license='BSD',
       packages=['anchor'],
       install_requires=[
