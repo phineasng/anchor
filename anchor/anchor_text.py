@@ -25,7 +25,7 @@ def id_generator(size=15):
 
 class AnchorText(object):
     """bla"""
-    def __init__(self, nlp, class_names, use_unk_distribution=True):
+    def __init__(self, nlp, class_names, use_unk_distribution=True, unk_token = 'UNK'):
         """
         Args:
             nlp: spacy object
@@ -39,6 +39,7 @@ class AnchorText(object):
         self.class_names = class_names
         self.neighbors = utils.Neighbors(self.nlp)
         self.use_unk_distribution = use_unk_distribution
+        self.unk_token = unk_token
 
     def get_sample_fn(self, text, classifier_fn, use_proba=False):
         true_label = classifier_fn([text])[0]
@@ -57,7 +58,7 @@ class AnchorText(object):
                     n_changed = np.random.binomial(num_samples, .5)
                     changed = np.random.choice(num_samples, n_changed,
                                                replace=False)
-                    raw[changed, i] = 'UNK'
+                    raw[changed, i] = self.unk_token
                     data[changed, i] = 0
                 if (sys.version_info > (3, 0)):
                     raw_data = [' '.join([y.decode() for y in x]) for x in raw]
